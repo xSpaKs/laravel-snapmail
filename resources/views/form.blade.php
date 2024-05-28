@@ -7,22 +7,28 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
 </head>
 <body>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
     @csrf
-
-        <input type="email" name="email" placeholder="Mail du destinataire">
-        <textarea name="message" placeholder="Message"></textarea>
-
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li style="color:red">{{ $error }}</li>
-                    @endforeach
-                </ul>
+    
+        @if (session('success'))
+            <div style="color: green;">
+                {{ session('success') }}
             </div>
         @endif
-        
+
+        <input style="margin-top: 30px;" type="email" name="email" placeholder="Mail du destinataire">
+        <textarea name="message" placeholder="Message"></textarea>
+        <input type="file" name="image">
+  
+        @if ($errors->any())
+        <div style="color: red;">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
 
         <input type="submit" value="Envoyer le message">
     </form>

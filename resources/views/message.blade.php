@@ -8,5 +8,9 @@
 </head>
 <body>
     {{ $message }}
+
+    @if($image)
+    <img src="{{ asset('/images/' . $image) }}" alt="Message Photo">
+    @endif
 </body>
 </html>
