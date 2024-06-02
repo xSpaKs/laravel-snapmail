@@ -72,6 +72,7 @@ class MessageController extends Controller
         
         DB::table('messages')->where('token', $token)->delete();
         $image_path = public_path("images/" . $message->photo);
+        
         /*if (file_exists($image_path)) { unlink($image_path); }*/
         
         return view('message')->with('message', $message->message)->with('image', $message->photo);
